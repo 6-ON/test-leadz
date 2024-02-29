@@ -1,13 +1,12 @@
-import { Button, ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider } from '@chakra-ui/react'
 import { theme } from './config/theme'
+import { RouterProvider } from 'react-router-dom'
+import router from './router'
 
 function App() {
 	return (
 		<ChakraProvider theme={theme}>
-			<div>
-				{/* <Button colorScheme="blue">Button</Button> */}
-				<Button>Buttodezdzn</Button>
-			</div>
+			<RouterProvider router={router}></RouterProvider>
 		</ChakraProvider>
 	)
 }
