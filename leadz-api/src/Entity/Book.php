@@ -58,7 +58,7 @@ class Book
 
     #[ORM\Column(type: "text")]
     #[Assert\NotBlank]
-    #[Groups(["book:read", 'book:collection','author:read'])]
+    #[Groups(["book:read", 'book:collection', 'author:read'])]
     public  string $description;
 
 
@@ -66,7 +66,7 @@ class Book
 
     #[ORM\Column]
     #[Assert\NotNull]
-    #[Groups(["book:read", 'book:collection','author:read'])]
+    #[Groups(["book:read", 'book:collection', 'author:read'])]
     public ?\DateTimeImmutable $publicationDate = null;
 
 
@@ -74,7 +74,7 @@ class Book
 
     #[ORM\Column(type: "string")]
     #[Assert\NotBlank]
-    #[Groups(["book:read", 'book:collection','author:read'])]
+    #[Groups(["book:read", 'book:collection', 'author:read'])]
     public string $genre;
 
 
@@ -89,7 +89,7 @@ class Book
 
 
     #[ORM\OneToMany(targetEntity: Review::class, mappedBy: "book")]
-    #[Groups(["book:read",'book:collection','author:read'])]
+    #[Groups(["book:read", 'book:collection', 'author:read'])]
     public iterable $reviews;
 
 
