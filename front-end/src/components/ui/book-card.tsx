@@ -1,24 +1,26 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { Card, CardBody, Heading, Image, Stack, Tag, TagLabel, Text } from '@chakra-ui/react'
+import { Card, CardBody, Heading, Image, Stack, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import bookImg from '@/assets/book.png'
-// @ts-ignore
-const BookCard = ({ book }) => {
-	// const { title, author, genre, image } = book
+import { Book } from '@/interfaces'
+
+type Props = {
+	book: Book
+}
+
+const BookCard: React.FC<Props> = ({ book }) => {
+	const { id, author, description, title } = book
 	return (
-		<Link to="/books/1" className="w-fit">
-			<Card maxW="sm" cursor={'pointer'} variant="outline">
+		<Link to={`/books/${id}`}>
+			<Card maxW="64" cursor={'pointer'} variant="outline">
 				<CardBody>
 					<Image src={bookImg} alt="Book" />
 					<Stack mt="6" spacing="3">
 						<Heading size="xxs" color={'gray.500'}>
-							John Doe
+							{author?.fullName}
 						</Heading>
-						<Heading size="md">Living room Sofa</Heading>
-						<Text>
-							This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned
-							spaces and for people who love a chic design with a sprinkle of vintage design.
-						</Text>
+						<Heading size="md">{title}</Heading>
+						<Text>{description}</Text>
 					</Stack>
 				</CardBody>
 			</Card>

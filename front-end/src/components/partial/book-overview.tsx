@@ -1,33 +1,39 @@
-import { HStack, Heading, Image } from '@chakra-ui/react'
+import { Card, CardBody, HStack, Heading, Image } from '@chakra-ui/react'
 import bookImg from '@/assets/book.png'
 import ReviewModal from '../ui/review-modal'
+import { Book } from '@/interfaces'
+type Props = {
+	book: Book
+}
+const BookOverview: React.FC<Props> = ({ book }) => {
+	const { author, title, description, publicationDate, genre } = book
 
-const BookOverview = () => {
 	return (
 		<div className="flex max-md:flex-col items-center max-md:text-center max-md:p-3">
 			<Image src={bookImg} w="sm" alt="Book" />
-			<div className="space-y-5">
+			<div className="space-y-5 w-full">
 				<HStack>
-					<Heading size="md">Book Title</Heading>
-					<ReviewModal />
+					<Heading size="md">{title}</Heading>
+					<ReviewModal bookId={book['@id']} />
 				</HStack>
 				<Heading size="xs" color={'gray.500'}>
-					Author Name : <span className="font-bold text-gray-800">John Doe</span>
+					Author Name : <span className="font-bold text-gray-800">{author.fullName}</span>
 				</Heading>
 				<Heading size="xs" color={'gray.500'}>
-					Publishing date : <span className="font-bold text-gray-800">{new Date().toDateString()}</span>
+					Publishing date : <span className="font-bold text-gray-800">{publicationDate}</span>
 				</Heading>
 				<Heading size="xs" color={'gray.500'}>
-					Genre : <span className="font-bold text-gray-800">Lol</span>
+					Genre : <span className="font-bold text-gray-800">{genre}</span>
 				</Heading>
 				<div className="space-y-2">
 					<Heading size="xs" color={'gray.500'}>
 						Description :
 					</Heading>
-					<p className="max-w-md">
-						This sofa is perfect for modern tropical spaces, baroque inspired spaces, earthy toned spaces
-						and for people who love a chic design with a sprinkle of vintage design.
-					</p>
+					<Card bg={"green.100"}>
+						<CardBody >
+							<p className="text-gray-800">{description}</p>
+						</CardBody>
+					</Card>
 				</div>
 			</div>
 		</div>
