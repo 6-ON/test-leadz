@@ -5,7 +5,7 @@ export interface BooksResponse {
 	'hydra:totalItems': number
 	'hydra:member': Book[]
 	'hydra:search': HydraSearch
-	'hydra:view': HydraView
+	'hydra:view'?: HydraView
 }
 
 export interface Book {
@@ -25,7 +25,8 @@ export interface HydraView {
 	'@type': string
 	'hydra:first': string
 	'hydra:last': string
-	'hydra:next': string
+	'hydra:previous'?: string
+	'hydra:next'?: string
 }
 
 export interface Author {

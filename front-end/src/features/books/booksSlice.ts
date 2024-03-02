@@ -14,10 +14,8 @@ interface BooksState {
 }
 
 // thunks
-export const fetchBooks = createAsyncThunk('books/fetchBooks', async (title: string | null) => {
-	const searchParams = new URLSearchParams()
-	if (title) searchParams.set('title', title)
-	const response = await fetch('http://localhost:8000/api/books?' + searchParams.toString())
+export const fetchBooks = createAsyncThunk('books/fetchBooks', async (search:URLSearchParams) => {
+	const response = await fetch('http://localhost:8000/api/books?' + search.toString())
 	const data: BooksResponse = await response.json()
 	return data
 })
