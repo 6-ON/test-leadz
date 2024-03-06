@@ -70,7 +70,7 @@ export interface Review {
 	fullName: string
 	email: string
 	comment: string
-	creationDate: Date
+	creationDate: string
 }
 
 export type ReviewForm = Pick<Review, 'fullName' | 'email' | 'comment'> & { book: string }
