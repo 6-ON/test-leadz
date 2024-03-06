@@ -47,7 +47,7 @@ final class BookFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            'author' => AuthorFactory::random(),
+            'author' => AuthorFactory::randomOrCreate(),
             'description' => self::faker()->realText(),
             'genre' => self::faker()->colorName(),
             'publicationDate' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),

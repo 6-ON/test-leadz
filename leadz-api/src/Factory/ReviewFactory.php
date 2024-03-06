@@ -47,7 +47,7 @@ final class ReviewFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            'book' => BookFactory::random(),
+            'book' => BookFactory::randomOrCreate(),
             'comment' => self::faker()->realText(),
             'email' => self::faker()->email(),
             'fullName' => self::faker()->name(),
