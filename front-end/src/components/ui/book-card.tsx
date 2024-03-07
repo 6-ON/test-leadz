@@ -11,8 +11,8 @@ const BookCard: React.FC<Props> = ({ book }) => {
 	const { id, author, title } = book
 	return (
 		<Link to={`/books/${id}`}>
-			<Card w="40" h={'full'} overflow={'hidden'} textAlign={'center'} cursor={'pointer'} variant="outline">
-				<CardBody pt={0} px={0} >
+			<Card w="40" h={'full'} overflow={'hidden'} textAlign={'center'} cursor={'pointer'} variant="outline" data-cy="book-card">
+				<CardBody pt={0} px={0}>
 					<Image
 						mx="auto"
 						roundedBottom={5}
@@ -20,10 +20,12 @@ const BookCard: React.FC<Props> = ({ book }) => {
 						alt="Book"
 					/>
 					<Stack mt="6" spacing="3" px={2}>
-						<Heading size="xs" color={'gray.500'}>
+						<Heading size="xs" color={'gray.500'} data-cy="fullName">
 							{author?.fullName}
 						</Heading>
-						<Heading size="sm">{title}</Heading>
+						<Heading size="sm" data-cy="book-title">
+							{title}
+						</Heading>
 					</Stack>
 				</CardBody>
 			</Card>
